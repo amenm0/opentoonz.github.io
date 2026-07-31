@@ -58,7 +58,8 @@ To add a new web application, you must prepare a dedicated folder named after yo
       "title": "Title of the article",
       "url": "https://stackoverflow.com/path/to/article"
     }
-  ]
+  ],
+  "downloadUrl": "https://drive.google.com/file/d/PATH_TO_ZIPPED_APP_DATA/view?usp=sharing"
 }
 
 ```
@@ -67,6 +68,7 @@ To add a new web application, you must prepare a dedicated folder named after yo
 
 * **`referencedOSS`** (Optional): If you explicitly instructed the AI to refer to specific open-source software (OSS) source codes in your prompts, list their name, URL, and license here. **Crucial:** If `referencedOSS` is present, you *must* ensure compliance with that OSS license. For example, if you referenced an OSS under the MIT License, you must include its original copyright notice and the full license text within the comments section of your application's `index.html`.
 * **`referenceArticles`** (Optional): If you explicitly instructed the AI to refer to specific web articles, documentation, or blog posts in your prompts, list their titles and URLs here.
+* **`downloadUrl`** (Optional): By default, the portal's "Download" button downloads a standalone copy of your `index.html`, which works only for apps that are fully self-contained in that single file. If your app instead ships extra files (e.g., a bundled `assets/` folder produced by a build tool like Vite) or cannot simply be double-clicked and must be served over `http(s)://` (due to ES module imports or browser security restrictions such as the File System Access API), set `downloadUrl` to a URL pointing to a ZIP archive containing everything a user needs to run your app locally. When `downloadUrl` is present, the Download button opens that URL instead of downloading `index.html`.
 
 ---
 
@@ -161,7 +163,8 @@ opentoonz.github.io/ (Repository Root)
       "title": "技術解説記事のタイトル",
       "url": "https://qiita.com/path/to/article"
     }
-  ]
+  ],
+  "downloadUrl": "https://drive.google.com/file/d/PATH_TO_ZIPPED_APP_DATA/view?usp=sharing"
 }
 
 ```
@@ -171,6 +174,7 @@ opentoonz.github.io/ (Repository Root)
 * **`referencedOSS`**（省略可）: AIへのプロンプト内で参照先として明示的に指示したOSS（オープンソースソフトウェア）のソースコードがある場合、その名称、URL、ライセンスをここに記載します。,<br>
 **重要:** `referencedOSS` が存在する場合、参照元のOSSライセンスに必ず準拠してください（例：MITライセンスで公開されたOSSを参照・利用した場合は、元の著作権表示とライセンス全文を `index.html` 内のコメントとして明示的に記述するなど）。
 * **`referenceArticles`**（省略可）: AIへのプロンプト内で参照先として明示的に指示したWeb上の技術解説記事やブログ投稿がある場合、そのタイトルとURLをここに記載します。
+* **`downloadUrl`**（省略可）: ポータルの「ダウンロード」ボタンは、既定では `index.html` 単体をダウンロードする仕様になっており、これは1ファイルで完結するアプリにのみ有効です。もしアプリがVite等のビルドツールで生成された `assets/` フォルダなど複数ファイルに依存している場合や、File System Access APIやESモジュールの制約により `http(s)://` 経由でのサーバー配信が必須で、ファイルをダブルクリックするだけでは動作しない場合は、アプリの実行に必要なファイル一式をZIP圧縮したものをアップロードし、そのURLを `downloadUrl` に指定してください。`downloadUrl` が指定されている場合、「ダウンロード」ボタンは `index.html` の代わりにこのURLを開くようになります。
 
 ---
 
